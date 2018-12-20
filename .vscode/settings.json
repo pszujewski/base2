@@ -9,5 +9,6 @@
           "when": "$(basename)"
       }
   },
+  "files.trimTrailingWhitespace": true,
   "editor.tabSize": 4,
 }
