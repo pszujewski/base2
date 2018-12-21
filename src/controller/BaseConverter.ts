@@ -28,7 +28,7 @@ export default class BaseConverter {
                 conversion = { code: 2, body: { error: "Invalid target number system" } };
             }
         } catch (err) {
-            conversion = { code: 2, body: { error: `Failure: ${err.message}` } };
+            conversion = { code: 2, body: { error: err.message } };
         }
 
         return conversion;
@@ -42,7 +42,7 @@ export default class BaseConverter {
             decimalVal = this.decimalTarget.convertToDecimal(binaryNumber);
             conversion = { code: 0, body: { result: decimalVal } };
         } catch (err) {
-            conversion = { code: 2, body: { error: `Failure: ${err.message}` } };
+            conversion = { code: 2, body: { error: err.message } };
         }
 
         return conversion;
@@ -56,7 +56,7 @@ export default class BaseConverter {
             bits = this.binaryTarget.getBitsFromDecimalNumber(decimalNumber);
             conversion = { code: 0, body: { result: bits } };
         } catch (err) {
-            conversion = { code: 2, body: { error: `Failure: ${err.message}` } };
+            conversion = { code: 2, body: { error: err.message } };
         }
 
         return conversion;
