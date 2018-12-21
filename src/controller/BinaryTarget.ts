@@ -1,9 +1,22 @@
+import DigitsValidator from "./DigitsValidator";
+
 export default class BinaryTarget {
+    private validator: DigitsValidator;
+
+    constructor() {
+        this.validator = new DigitsValidator();
+    }
+
     public getBitsFromDecimalNumber(decimalNum: string): string {
         let bits: string;
 
         try {
+            if (!this.validator.isValidUserInput(decimalNum)) {
+                throw new Error("Please input a valid decimal number for conversion to binary");
+            }
+
             const decimal: number = this.prepareNumber(decimalNum);
+
             bits = this.accumulateBits(decimal, []);
         } catch (err) {
             throw err;
