@@ -1,44 +1,37 @@
 import program from "commander";
 import BaseConverter from "./controller/BaseConverter";
-import { IConversionResult, IConversionErrorBody, IConversionSuccessBody } from "./models";
-import Log from "./Util";
+
+import { IConversionResult } from "./models";
+import ConversionPrinter from "./ui/ConversionPrinter";
 
 class App {
     private converter: BaseConverter;
+    private printer: ConversionPrinter;
 
     constructor() {
         this.converter = new BaseConverter();
+        this.printer = new ConversionPrinter();
     }
 
-    public base2Init(): void {
-        let conversion: IConversionResult;
-        let errorBody: IConversionErrorBody;
-        let resultBody: IConversionSuccessBody;
+    public execute(): void {
+        const v: string = "0.1.0";
+        const args: string = "<target> <digits>";
 
-        program
-            .version("0.1.0")
-            .arguments("<target> <digits>")
-            .action((target: string, digits: string) => {
-                if (target === "binary") {
-                    conversion = this.converter.convertToBaseTwo(digits);
-                } else {
-                    conversion = this.converter.convertToBaseTen(digits);
-                }
-
-                if (conversion.body.hasOwnProperty("result")) {
-                    resultBody = (conversion.body as IConversionSuccessBody);
-                    Log.info(`Conversion to ${target}: ${resultBody.result}`);
-                    Log.info(`Original input was ${digits}`);
-                } else {
-                    errorBody = (conversion.body as IConversionErrorBody);
-                    Log.error(errorBody.error);
-                }
-            });
-
+        program.version(v).arguments(args).action(this.onDigitsGiven);
         program.parse(process.argv);
+    }
+
+    private onDigitsGiven = (target: string, digits: string): void => {
+        let conversion: IConversionResult;
+        try {
+            conversion = this.converter.convertDigitsByTarget(target, digits);
+            this.printer.display(target, digits, conversion);
+        } catch (err) {
+            this.printer.generalError();
+        }
     }
 }
 
 const app = new App();
 
-app.base2Init();
+app.execute();

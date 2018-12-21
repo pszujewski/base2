@@ -33,7 +33,7 @@ describe("BaseConverter convert decimal to binary and vice versa", function () {
 
         for (test of tests) {
             try {
-                res = baseConverter.convertToBaseTwo(test.decimal);
+                res = baseConverter.convertDigitsByTarget("binary", test.decimal);
             } catch (err) {
                 res = err;
                 expect.fail("Test threw unexpected error");
@@ -54,7 +54,7 @@ describe("BaseConverter convert decimal to binary and vice versa", function () {
 
         for (test of tests) {
             try {
-                res = baseConverter.convertToBaseTen(test.binary);
+                res = baseConverter.convertDigitsByTarget("decimal", test.binary);
             } catch (err) {
                 res = err;
                 expect.fail("Test threw unexpected error");
@@ -80,7 +80,7 @@ describe("BaseConverter convert decimal to binary and vice versa", function () {
 
         for (test of testsCommas) {
             try {
-                res = baseConverter.convertToBaseTwo(test.decimal);
+                res = baseConverter.convertDigitsByTarget("binary", test.decimal);
             } catch (err) {
                 res = err;
                 expect.fail("Test threw unexpected error");

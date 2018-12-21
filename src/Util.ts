@@ -69,4 +69,8 @@ export default class Log {
             console.log(`<X> ${new Date().toLocaleString()}: ${msg}`);
         }
     }
+
+    public static printSpace(): void {
+        console.log("");
+    }
 }
