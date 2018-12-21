@@ -5,7 +5,7 @@ export default class DigitsValidator {
                 return false;
             }
 
-            if (!this.strOnlyContainsDigits(numStr)) {
+            if (!this.strOnlyContainsDigitsOrCommas(numStr)) {
                 return false;
             }
         } catch (err) {
@@ -14,9 +14,9 @@ export default class DigitsValidator {
         return true;
     }
 
-    private strOnlyContainsDigits(numStr: string): boolean {
+    private strOnlyContainsDigitsOrCommas(numStr: string): boolean {
         try {
-            return /^\d+$/.test(numStr);
+            return /^(\d|,)+$/.test(numStr);
         } catch (err) {
             throw err;
         }
