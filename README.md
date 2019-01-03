@@ -1,7 +1,3 @@
-# base2
+# base2 CLI
 
-Add error state tests
-
-Add help functionality
-
-Add comments for key methods
+![base2 usage image](./assets/base2-usage.png)

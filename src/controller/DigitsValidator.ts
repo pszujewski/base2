@@ -1,3 +1,5 @@
+// basic validation of user input given
+
 export default class DigitsValidator {
     public isValidUserInput(numStr: string): boolean {
         try {

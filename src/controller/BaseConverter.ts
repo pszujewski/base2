@@ -7,6 +7,8 @@ enum NumberSystemTargets {
     decimal = "decimal",
 }
 
+// Entry point for retrieving a conversion
+
 export default class BaseConverter {
     private binaryTarget: BinaryTarget;
     private decimalTarget: DecimalTarget;
@@ -16,6 +18,13 @@ export default class BaseConverter {
         this.decimalTarget = new DecimalTarget();
     }
 
+    /**
+     *
+     * @param target
+     * @param digits
+     * Target identifies the number system to which we are converting the given
+     * digits
+     */
     public convertDigitsByTarget(target: string, digits: string): IConversionResult {
         let conversion: IConversionResult;
 
@@ -34,6 +43,11 @@ export default class BaseConverter {
         return conversion;
     }
 
+    /**
+     *
+     * @param binaryNumber
+     * Given a binary system number, converts it to decimal system number
+     */
     private convertToBaseTen(binaryNumber: string): IConversionResult {
         let conversion: IConversionResult;
         let decimalVal: string;
@@ -48,6 +62,11 @@ export default class BaseConverter {
         return conversion;
     }
 
+    /**
+     *
+     * @param decimalNumber
+     * Given a decimal system number, converts it to binary
+     */
     private convertToBaseTwo(decimalNumber: string): IConversionResult {
         let conversion: IConversionResult;
         let bits: string;

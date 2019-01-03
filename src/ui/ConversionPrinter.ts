@@ -2,6 +2,13 @@ import Log from "../Util";
 import { IConversionResult, IConversionSuccessBody, IConversionErrorBody } from "../models";
 
 export default class ConversionPrinter {
+    /**
+     *
+     * @param target
+     * @param original
+     * @param conversion
+     * Prints the conversion result to sdout, user views result in the terminal
+     */
     public display(target: string, original: string, conversion: IConversionResult): void {
         let resultBody: IConversionSuccessBody;
         let errorBody: IConversionErrorBody;
