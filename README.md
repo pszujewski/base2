@@ -6,7 +6,7 @@ Converts base-10 numbers to base-2 numbers and vice versa. Usage is as follows:
 
 To use on your machine, clone this repo and execute:
 
-` bash
+``` bash
 # install dependencies
 npm install
 
@@ -20,12 +20,12 @@ npm run-script build
 node src/App.js binary 42
 
 # should produce 101010
-`
+```
 
 To run the tests:
 
-`bash
+````bash
 npm run-script test
-`
+```
 
 Thank you!
