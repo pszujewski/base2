@@ -24,7 +24,7 @@ node src/App.js binary 42
 
 To run the tests:
 
-````bash
+```bash
 npm run-script test
 ```
 
